@@ -64,7 +64,7 @@ export default function Post() {
                                 />
                                 <div className="border border-black rounded-lg sm:rounded-xl bg-[#F8A065] absolute top-4 sm:top-6 left-4 sm:left-6 p-2 w-min text-center">
                                     <h4 className="text-xl sm:text-2xl font-semibold">
-                                        {blogPosts?.createdAt ? moment(blogPosts?.createdAt).format("DD MMM") : null}
+                                        {blogPosts?.published_date ? moment(blogPosts?.published_date).format("DD MMM") : null}
                                     </h4>
                                 </div>
                             </div>
