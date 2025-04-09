@@ -333,7 +333,20 @@ export default function Header() {
           <p className='cursor-pointer nav_link1'><Link to="/" className='text-[15px] font-semibold' onClick={closeDrawer}>HOME</Link>
             <span className={`hover_img1 ${currentPathname === '/' ? '!block' : ''}`}><svg className="qodef-svg--menu-brush qodef-menu-item-brush qodef-menu-item-brush fill-[#f8a065]" width="74.204" height="41.153" viewBox="0 0 74.204 41.153"><path d="M6.763 35.078a6.232 6.232 0 0 1-5.026-2.792 9.966 9.966 0 0 1 .5-11.917C3.132 19.364 24.63-4.2 65.32.659c3.717.444 6.441 4.565 6.085 9.2s-3.658 8.034-7.374 7.6C29.2 13.3 11.46 32.715 11.284 32.912a6.049 6.049 0 0 1-4.521 2.166Z" transform="rotate(4.992 1.5265 35.01869904)"></path></svg></span>
           </p>
-          <p className='cursor-pointer nav_link2' onClick={() => toggleMenu('growth')}>
+          <p className='cursor-pointer nav_link2 font-semibold' onClick={() => toggleMenu('growth')}>
+            WEB DESIGN & DEVELOPMENT
+            <span className={`ml-2 transform transition-transform duration-300 ${openMenu === 'growth' ? 'rotate-180' : ''}`}>↓</span>
+          </p>
+          {openMenu === 'growth' && (
+            <div className={`pl-4 flex flex-col gap-2 overflow-hidden transition-all duration-300 ease-in-out`}>
+              <Link to="/web-design/uiux-design" onClick={closeDrawer} className='text-[14px] font-medium'>UI/UX Design</Link>
+              <Link to="/web-design/web-application" onClick={closeDrawer} className='text-[14px] font-medium'>Website Design & Development</Link>
+              <Link to="/web-design/web-application" onClick={closeDrawer} className='text-[14px] font-medium'>Custom Web Application</Link>
+              <Link to="/web-design/saas-development" onClick={closeDrawer} className='text-[14px] font-medium'>SaaS Product Development</Link>
+              <Link to="/web-design/seo-services" onClick={closeDrawer} className='text-[14px] font-medium'>Seo Services</Link>
+            </div>
+          )}
+          <p className='cursor-pointer nav_link2 font-semibold' onClick={() => toggleMenu('growth')}>
             GROWTH ADVERTISING
             <span className={`ml-2 transform transition-transform duration-300 ${openMenu === 'growth' ? 'rotate-180' : ''}`}>↓</span>
           </p>
@@ -347,7 +360,7 @@ export default function Header() {
               <Link to="/growth-advertising/email-marketing" onClick={closeDrawer} className='text-[14px] font-medium'>Email Marketing</Link>
             </div>
           )}
-          <p className='cursor-pointer nav_link2' onClick={() => toggleMenu('creative')}>
+          <p className='cursor-pointer nav_link2 font-semibold' onClick={() => toggleMenu('creative')}>
             CREATIVE MARKETING
             <span className={`ml-2 transform transition-transform duration-300 ${openMenu === 'creative' ? 'rotate-180' : ''}`}>↓</span>
           </p>
