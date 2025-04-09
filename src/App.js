@@ -43,6 +43,7 @@ import Uiux from "./app/services/services-slug/uiuxdesign/UiUxDesign";
 import Webdesign from "./app/services/services-slug/websitedesign/WebsiteDesign";
 import Customweb from "./app/services/services-slug/customwebapp/CustomWebApp";
 import Saasdevelopment from "./app/services/services-slug/saasdevelopment/SaasDevelopment";
+import SeoServices from "./app/services/services-slug/seoservices/SeoServices";
 
 function App() {
   return (
@@ -69,6 +70,10 @@ function App() {
             path="/web-design/saas-development"
             element={<Saasdevelopment />}
         />
+        <Route  
+            path="/web-design/seo-services"
+            element={<SeoServices/>}
+        />
         <Route path="/growth-advertising" element={<Services />} />
           <Route path="/creative-marketing" element={<Services />} />
           <Route  
@@ -76,8 +81,8 @@ function App() {
             element={<BrandingService />}
           />
           <Route
-            path="/creative-marketing/graphic-design"
-            // element={<GraphicDesignService />}
+            path="/creative-marketing/GraphicDesignService"
+            element={<GraphicDesignService />}
           />
           <Route
             path="/creative-marketing/3d-branding"

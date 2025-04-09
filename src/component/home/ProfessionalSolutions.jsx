@@ -23,32 +23,34 @@ const GradientIcon = () => (
 export const ProfessionalSolutions1 = () => {
     const [index, setIndex] = useState("1");
     const items = [
-        { id: "1", label: "Small Image" },
-        { id: "2", label: "Big Image" },
-        { id: "3", label: "Full Width Image" },
-        { id: "4", label: "Big Slide" }
+        { id: "1", label: "UI/UX Design", link: "/web-design/uiux-design" },
+        { id: "2", label: "Website Design & Development", link: "web-design/website-design" },
+        { id: "3", label: "Custom Web Applications", link: "/web-design/web-application" },
+        { id: "4", label: "SaaS Product Development", link: "/web-design/saas-development" },
+        { id: "5", label: "Seo Services", link: "/web-design/seo-services" }
     ];
 
     return (
         <div className="border border-black my-8 rounded-[70px] grid lg:grid-cols-2 overflow-hidden">
             <div className="col-span-1 border-r border-black">
                 <div className="px-10 py-14 sm:py-14 bg-[#d2ebf8] border-b border-black">
-                    <h2 className="text-3xl sm:text-[52px] font-semibold">Portfolio Styles</h2>
+                    <h2 className="text-3xl sm:text-[52px] font-semibold">Web Design & Development</h2>
                 </div>
                 {items.map((item, idx) => (
-                    <div
-                        key={item.id}
-                        className={`sm:px-10 relative p-3 py-6 sm:py-8 ${index === item.id ? 'bg-white' : 'bg-[#d2ebf8]'} ${idx < items.length - 1 ? 'border-b' : ''} border-black cursor-pointer hover:bg-white`}
+                    <Link 
+                        key={item.id} 
+                        to={item.link}
+                        className={`sm:px-10 relative p-3 py-6 sm:py-8 flex items-center justify-between ${index === item.id ? 'bg-white' : 'bg-[#d2ebf8]'} ${idx < items.length - 1 ? 'border-b' : ''} border-black cursor-pointer hover:bg-white`}
                         onMouseEnter={() => setIndex(item.id)}
                     >
                         <div className="flex items-center gap-2">
                             <GradientIcon />
                             <h2 className="text-3xl sm:text-[40px] font-semibold">{item.label}</h2>
                         </div>
-                        <Link to={`#`} className='absolute right-5 top-10 border rounded-full border-b border-black p-2 text-lg animate-arrow2'>
+                        <div className='border rounded-full border-b border-black p-2 text-lg animate-arrow2'>
                             <GoArrowUpRight className='transition-transform duration-300 transform' />
-                        </Link>
-                    </div>
+                        </div>
+                    </Link>
                 ))}
             </div>
             <div className={`col-span-1 relative`} >
@@ -57,13 +59,16 @@ export const ProfessionalSolutions1 = () => {
         </div>
     );
 };
+
 export const ProfessionalSolutions2 = () => {
     const [index, setIndex] = useState("1");
     const items = [
-        { id: "1", label: "Small Image" },
-        { id: "2", label: "Big Image" },
-        { id: "3", label: "Full Width Image" },
-        { id: "4", label: "Big Slide" }
+        { id: "1", label: "Influencer Marketing", link: "/growth-advertising/influencer-marketing" },
+        { id: "2", label: "E-commerce Marketing", link: "/growth-advertising/ecommerce-marketing" },
+        { id: "3", label: "Facebook Ads", link: "/growth-advertising/facebook-ads" },
+        { id: "4", label: "PPC (Pay-Per-Click)", link: "/growth-advertising/ppc" },
+        { id: "5", label: "YouTube Marketing", link: "/growth-advertising/youtube-marketing" },
+        { id: "6", label: "Email Marketing'", link: "/growth-advertising/email-marketing" }
     ];
 
     return (
@@ -73,56 +78,63 @@ export const ProfessionalSolutions2 = () => {
             </div>
             <div className="col-span-1 border-r border-black">
                 <div className="px-10 py-14 sm:py-14 bg-[#cbdec6] border-b border-black">
-                    <h2 className="text-3xl sm:text-[52px] font-semibold">Portfolio Styles</h2>
+                    <h2 className="text-3xl sm:text-[52px] font-semibold">Growth advertising</h2>
                 </div>
                 {items.map((item, idx) => (
-                    <div
-                        key={item.id}
-                        className={`sm:px-10 relative p-3 py-6 sm:py-8 ${index === item.id ? 'bg-white' : 'bg-[#cbdec6]'} ${idx < items.length - 1 ? 'border-b' : ''} border-black cursor-pointer hover:bg-white`}
+                    <Link 
+                        key={item.id} 
+                        to={item.link}
+                        className={`sm:px-10 relative p-3 py-6 sm:py-8 flex items-center justify-between ${index === item.id ? 'bg-white' : 'bg-[#cbdec6]'} ${idx < items.length - 1 ? 'border-b' : ''} border-black cursor-pointer hover:bg-white`}
                         onMouseEnter={() => setIndex(item.id)}
                     >
                         <div className="flex items-center gap-2">
                             <GradientIcon />
                             <h2 className="text-3xl sm:text-[40px] font-semibold">{item.label}</h2>
                         </div>
-                        <Link to={`#`} className='absolute right-5 top-10 border rounded-full border-b border-black p-2 text-lg animate-arrow2'>
+                        <div className='border rounded-full border-b border-black p-2 text-lg animate-arrow2'>
                             <GoArrowUpRight className='transition-transform duration-300 transform' />
-                        </Link>
-                    </div>
+                        </div>
+                    </Link>
                 ))}
             </div>
         </div>
     );
 };
+
 export const ProfessionalSolutions3 = () => {
     const [index, setIndex] = useState("1");
     const items = [
-        { id: "1", label: "Small Image" },
-        { id: "2", label: "Big Image" },
-        { id: "3", label: "Full Width Image" },
-        { id: "4", label: "Big Slide" }
+        { id: "1", label: "Branding", link: "/creative-marketing/branding" },
+        { id: "2", label: "Graphic Design", link: "/creative-marketing/graphic-design" },
+        { id: "3", label: "3D Branding", link: "/creative-marketing/3d-branding" },
+        { id: "4", label: "Product Photography", link: "/creative-marketing/product-photography" },
+        { id: "5", label: "Modeling", link: "/creative-marketing/modeling" },
+        { id: "6", label: "Video Editing", link: "/creative-marketing/video-editing" },
+        { id: "7", label: "Social Media Management", link: "/creative-marketing/social-media-management" },
+        { id: "8", label: "Motion Graphics", link: "/creative-marketing/motion-graphics" },
     ];
 
     return (
         <div className="border border-black rounded-[70px] grid lg:grid-cols-2 overflow-hidden">
             <div className="col-span-1 border-r border-black">
                 <div className="px-10 py-14 sm:py-14 bg-[#f0ead8] border-b border-black">
-                    <h2 className="text-3xl sm:text-[52px] font-semibold">Portfolio Styles</h2>
+                    <h2 className="text-3xl sm:text-[52px] font-semibold">Creative Marketing</h2>
                 </div>
                 {items.map((item, idx) => (
-                    <div
-                        key={item.id}
-                        className={`sm:px-10 relative p-3 py-6 sm:py-8 ${index === item.id ? 'bg-white' : 'bg-[#f0ead8]'} ${idx < items.length - 1 ? 'border-b' : ''} border-black cursor-pointer hover:bg-white`}
+                    <Link 
+                        key={item.id} 
+                        to={item.link}
+                        className={`sm:px-10 relative p-3 py-6 sm:py-8 flex items-center justify-between ${index === item.id ? 'bg-white' : 'bg-[#f0ead8]'} ${idx < items.length - 1 ? 'border-b' : ''} border-black cursor-pointer hover:bg-white`}
                         onMouseEnter={() => setIndex(item.id)}
                     >
                         <div className="flex items-center gap-2">
                             <GradientIcon />
                             <h2 className="text-3xl sm:text-[40px] font-semibold">{item.label}</h2>
                         </div>
-                        <Link to={`#`} className='absolute right-5 top-10 border rounded-full border-b border-black p-2 text-lg animate-arrow2'>
+                        <div className='border rounded-full border-b border-black p-2 text-lg animate-arrow2'>
                             <GoArrowUpRight className='transition-transform duration-300 transform' />
-                        </Link>
-                    </div>
+                        </div>
+                    </Link>
                 ))}
             </div>
             <div className={`col-span-1 relative`} >

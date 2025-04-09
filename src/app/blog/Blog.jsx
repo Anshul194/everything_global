@@ -61,27 +61,26 @@ export default function Blog() {
     <>
       {/* <CommonBanner /> */}
 
-      <Banner />
+      {/* <Banner /> */}
       
       <div className='custom_container'>
                 <div className="my-18">
                     <h2 className="uppercase text-6xl sm:text-8xl font-extrabold mt-6 mb-12 whitespace-break-spaces break-words">
                         read some
-                        <span style={{ WebkitTextStroke: '1px black', color: 'transparent' }}> news</span>
+                        <span style={{ WebkitTextStroke: '1px black', color: 'transparent' }}> Blog</span>
                     </h2>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 mt-4">
                         {blogPosts.slice(0, visiblePosts).map((post) => {
                            const parsedContent = post?.content ? stripHtml(post.content).result : "";
 
                            const limitedContent = parsedContent.split(" ").slice(0, 150).join(" ") + (parsedContent.split(" ").length > 150 ? "..." : "");
-                          //  const limitedTitle = post?.title?.length > 25 ? post?.title.substring(0, 25) + "..." : post?.title;
                           
                         return <div key={post.id} className="col-span-1 border border-black rounded-[50px] overflow-hidden space-y-4 news_card">
                                 <div className="relative h-[300px] border-b border-black rounded-[50px] overflow-hidden">
                                     <img src={post.banner_image} alt={`blog${post.id}`} className="h-full object-cover w-full" />
-                                    <div className="border border-black rounded-xl bg-[#F8A065] absolute top-6 right-6 p-2 w-min text-center">
+                                    {/* <div className="border border-black rounded-xl bg-[#F8A065] absolute top-6 right-6 p-2 w-min text-center">
                                         <h4 className="text-2xl font-semibold">{post?.createdAt ? moment(post?.createdAt).format("DD MMM") : null}</h4>
-                                    </div>
+                                    </div> */}
                                 </div>
                                 <div className='p-6 pt-0'>
                                     <div className="space-y-2 p-4 lg:p-8 !pb-4">
@@ -118,14 +117,13 @@ export default function Blog() {
                 </div>
       </div>
 
-      <div className='mb-24 mt-20'>
+      {/* <div className='mb-24 mt-20'>
                 <div className='border border-black rounded-[50px] bg-[#cbdec6] p-6 md:p-14'>
                     <h2 className='text-[40px] sm:text-[54px] sm:leading-[60px] font-semibold max-sm:mt-8 mb-12'>Read Our Blog</h2>
                     {blogPosts.slice(0, 3).map((post) => {
                       const parsedContent = post?.content ? stripHtml(post.content).result : "";
 
                       const limitedContent = parsedContent.split(" ").slice(0, 150).join(" ") + (parsedContent.split(" ").length > 150 ? "..." : "");
-                      // const limitedTitle = post?.title?.length > 25 ? post?.title.substring(0, 25) + "..." : post?.title;
                         return <div
                             key={post.id}
                             className='grid grid-cols-12 gap-5 md:gap-10 md:h-[350px] lg:h-[400px] border border-black rounded-[50px] overflow-hidden space-y-4 news_card md:relative bg-white mb-8'
@@ -135,7 +133,6 @@ export default function Blog() {
                                 <div className='border border-black rounded-xl bg-[#F8A065] absolute top-10 right-10 p-3 md:py-4 md:px-6 w-min text-center'>
                                     <h4 className='font-semibold'>
                                         <span className='text-2xl md:text-3xl'>{post?.createdAt ? moment(post?.createdAt).format("DD MMM") : null}</span>
-                                        {/* <span className='text-2xl'> {post?.createdAt ? moment(post?.createdAt).format("DD MMM") : null}</span> */}
                                     </h4>
                                 </div>
                             </div>
@@ -156,11 +153,11 @@ export default function Blog() {
 })}
                 </div>
 
-            </div>
+            </div> */}
 
-            <div className='mb-24'>
+            {/* <div className='mb-24'>
                 <News />
-            </div>
+            </div> */}
 
 
 

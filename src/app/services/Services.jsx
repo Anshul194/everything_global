@@ -19,9 +19,9 @@ export default function Services() {
             <div className={`custom_container sm:px-12`}>
                 <AllServices />
             </div>
-            <div className={`pt-28`}>
+            {/* <div className={`pt-28`}>
                 <ProfessionalSolutions />
-            </div>
+            </div> */}
             {/* <div className={`pt-24 md:pt-32`} style={{ background: `url(/image/home/bacground-img.png)` }}>
                 <Service1 />
             </div>

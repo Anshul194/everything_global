@@ -3,7 +3,7 @@ import React from 'react';
 export default function ServiceBanner() {
     return (
         <>
-            <div className="relative w-full h-screen overflow-hidden">
+            <div className="relative w-full h-full max-h-[550px] overflow-hidden">
                 <img src='/image/services/shop-home-img2.jpg' alt='service-banner' title='service-banner'
                     className="absolute top-0 left-0 w-full h-full object-cover"
                 />

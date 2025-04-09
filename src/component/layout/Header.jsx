@@ -211,13 +211,14 @@ export default function Header() {
       <header
         className={`${isSticky ? 'sticky-header' : ''}  bg-[#f0ead8] transition-all duration-300 ease-in-out`}
       >
-        <div className={`grid grid-cols-12 lg:gap-10 custom_container items-center !py-6`}>
+        <div className={`flex justify-between lg:gap-10 custom_container items-center !py-6`}>
+        {/* <div className={`grid grid-cols-12 lg:gap-10 custom_container items-center !py-6`}> */}
           <div className={`col-span-6 lg:col-span-3`}>
             <Link to={`/`} className={``}>
               <img src="/image/logo.png" alt="Error" className='w-[240px]' />
             </Link>
           </div>
-          <div className={`hidden lg:block col-span-9`}>
+          <div className={`hidden xl:block col-span-9`}>
             <div className={`w-full flex justify-end`}>
               <div className={`flex gap-8 xl:gap-8 font-semibold items-center`}>
                 <p className='cursor-pointer nav_link1'><Link to="/">HOME</Link>
@@ -225,7 +226,7 @@ export default function Header() {
                 </p>
                 <div className='relative group'>
                   <p className='cursor-pointer nav_link2'>
-                    <Link to="/web-design">WEB DESIGN & DEVELOPMENT</Link>
+                    <Link to="/web-design" className='lg:whitespace-nowrap'>WEB DESIGN & DEVELOPMENT</Link>
                     <span className={`hover_img2 ${currentPathname === '/web-design' ? '!flex' : ''}`}><svg className="qodef-svg--menu-brush qodef-menu-item-brush qodef-menu-item-brush fill-[#f8a065]" width="74.204" height="41.153" viewBox="0 0 74.204 41.153"><path d="M6.763 35.078a6.232 6.232 0 0 1-5.026-2.792 9.966 9.966 0 0 1 .5-11.917C3.132 19.364 24.63-4.2 65.32.659c3.717.444 6.441 4.565 6.085 9.2s-3.658 8.034-7.374 7.6C29.2 13.3 11.46 32.715 11.284 32.912a6.049 6.049 0 0 1-4.521 2.166Z" transform="rotate(4.992 1.5265 35.01869904)"></path></svg></span>
                   </p>
                   <div className='absolute bg-[#F0EAD8] shadow-lg rounded-xl border-2 border-black border-opacity-60 z-50 lg:w-56 overflow-hidden  hidden group-hover:block'>
@@ -233,11 +234,12 @@ export default function Header() {
                     <Link to="/web-design/website-design" className='block px-4 py-2 hover:bg-gray-100'>Website Design & Development</Link>
                     <Link to="/web-design/web-application" className='block px-4 py-2 hover:bg-gray-100'>Custom Web Applications</Link>
                     <Link to="/web-design/saas-development" className='block px-4 py-2 hover:bg-gray-100'>SaaS Product Development</Link>
+                    <Link to="/web-design/seo-services" className='block px-4 py-2 hover:bg-gray-100'>Seo Services</Link>
                   </div>
                 </div>
                 <div className='relative group'>
                   <p className='cursor-pointer nav_link2'>
-                    <Link to="/growth-advertising">GROWTH ADVERTISING</Link>
+                    <Link to="/growth-advertising" className='lg:whitespace-nowrap'>GROWTH ADVERTISING</Link>
                     <span className={`hover_img2 ${currentPathname === '/growth-advertising' ? '!flex' : ''}`}><svg className="qodef-svg--menu-brush qodef-menu-item-brush qodef-menu-item-brush fill-[#f8a065]" width="74.204" height="41.153" viewBox="0 0 74.204 41.153"><path d="M6.763 35.078a6.232 6.232 0 0 1-5.026-2.792 9.966 9.966 0 0 1 .5-11.917C3.132 19.364 24.63-4.2 65.32.659c3.717.444 6.441 4.565 6.085 9.2s-3.658 8.034-7.374 7.6C29.2 13.3 11.46 32.715 11.284 32.912a6.049 6.049 0 0 1-4.521 2.166Z" transform="rotate(4.992 1.5265 35.01869904)"></path></svg></span>
                   </p>
                   <div className='absolute bg-[#F0EAD8] shadow-lg rounded-xl border-2 border-black border-opacity-60 z-50 lg:w-56 overflow-hidden  hidden group-hover:block'>
@@ -251,7 +253,7 @@ export default function Header() {
                 </div>
                 <div className='relative group'>
                   <p className='cursor-pointer nav_link2'>
-                    <Link to="/creative-marketing">CREATIVE MARKETING</Link>
+                    <Link to="/creative-marketing" className='lg:whitespace-nowrap'>CREATIVE MARKETING</Link>
                     <span className={`hover_img2 ${currentPathname === '/creative-marketing' ? '!block' : ''}`}><svg className="qodef-svg--menu-brush qodef-menu-item-brush qodef-menu-item-brush fill-[#f8a065]" width="74.204" height="41.153" viewBox="0 0 74.204 41.153"><path d="M6.763 35.078a6.232 6.232 0 0 1-5.026-2.792 9.966 9.966 0 0 1 .5-11.917C3.132 19.364 24.63-4.2 65.32.659c3.717.444 6.441 4.565 6.085 9.2s-3.658 8.034-7.374 7.6C29.2 13.3 11.46 32.715 11.284 32.912a6.049 6.049 0 0 1-4.521 2.166Z" transform="rotate(4.992 1.5265 35.01869904)"></path></svg></span>
                   </p>
                   <div className='absolute bg-[#F0EAD8] shadow-lg rounded-xl border-2 border-black border-opacity-60 z-50 lg:w-56 overflow-hidden hidden group-hover:block'>
@@ -278,7 +280,7 @@ export default function Header() {
               </div>
             </div>
           </div>
-          <div className={`flex lg:hidden col-span-6 cursor-pointer justify-end`}>
+          <div className={`flex xl:hidden col-span-6 cursor-pointer justify-end`}>
             <div onClick={toggleDrawer}> <DotGrid /></div>
           </div>
         </div>

@@ -41,6 +41,7 @@ export default function Home() {
             </div>
             <div className={``} >
                 <News />
+                {/* <News /> */}
             </div>
             <div className={`pt-12`} style={{ background: `url(/image/home/bacground-img.png)` }}>
                 <FooterTop />
