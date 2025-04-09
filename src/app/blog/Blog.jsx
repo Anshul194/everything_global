@@ -80,7 +80,7 @@ export default function Blog() {
                                 <div className="relative h-[300px] border-b border-black rounded-[50px] overflow-hidden">
                                     <img src={post.banner_image} alt={`blog${post.id}`} className="h-full object-cover w-full" />
                                     <div className="border border-black rounded-xl bg-[#F8A065] absolute top-6 right-6 p-2 w-min text-center">
-                                        <h4 className="text-2xl font-semibold">{post?.createdAt ? moment(post?.createdAt).format("DD MMM") : null}</h4>
+                                        <h4 className="text-2xl font-semibold">{post?.published_date ? moment(post?.published_date).format("DD MMM") : null}</h4>
                                     </div>
                                 </div>
                                 <div className='p-6 pt-0'>
