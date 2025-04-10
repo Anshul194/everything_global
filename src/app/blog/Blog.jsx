@@ -18,7 +18,7 @@ export default function Blog() {
   const dispatch = useDispatch();
   const blogPosts = useSelector((store) => store.blog.showBlogs);
   const firstBlogVisit = useSelector((store) => store.blog.firstBlogVisit);
-  const [visiblePosts, setVisiblePosts] = useState(6);
+  const [visiblePosts, setVisiblePosts] = useState(3);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [allPostsLoaded, setAllPostsLoaded] = useState(false);

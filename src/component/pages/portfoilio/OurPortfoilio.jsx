@@ -6,12 +6,11 @@ import axios from "axios";
 import Loader from "../../layout/Loader";
 
 export default function OurPortfolio() {
-  // const [currentTab, setCurrentTab] = useState('all');
+  const [currentTab, setCurrentTab] = useState('all');
   const [visibleItems, setVisibleItems] = useState(6);
-
   const [portfolioData, setPortfolioData] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [loading, setloading] = useState(true);
-  // everything_globel
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,6 +19,13 @@ export default function OurPortfolio() {
       if (resp?.data?.http_status_code === 200) {
         setloading(false);
         setPortfolioData(resp.data.data);
+        
+        // Extract unique categories from portfolio data
+        const uniqueCategories = [...new Set(resp.data.data.map(item => 
+          item.category?.name
+        ).filter(Boolean))];
+        
+        setCategories(uniqueCategories);
       }
     };
     fetchData();
@@ -29,7 +35,10 @@ export default function OurPortfolio() {
     return <Loader />;
   }
 
-  // const filteredItems = currentTab === 'all' ? portfolioData : portfolioData.filter(item => item.type === currentTab);
+  // Filter portfolio items based on selected category
+  const filteredItems = currentTab === 'all' 
+    ? portfolioData 
+    : portfolioData.filter(item => item.category?.name === currentTab);
 
   const handleLoadMore = () => {
     setVisibleItems((prev) => prev + 6);
@@ -37,43 +46,60 @@ export default function OurPortfolio() {
 
   return (
     <div>
-      <div className="flex justify-center space-x-4 mb-8">
+      <div className="flex justify-center flex-wrap gap-4 mb-8">
         <button
           className={`px-4 py-2 font-semibold relative uppercase`}
-          // onClick={() => setCurrentTab('all')}
+          onClick={() => setCurrentTab('all')}
         >
           <span className="relative z-10">Show All</span>
-          {/* <span className='relative z-10'>Show All</span> */}
-          {/* <span className={`port_active ${currentTab === 'all' ? 'block' : 'hidden'}`}>  <svg className="qodef-svg--menu-brush qodef-menu-item-brush qodef-menu-item-brush fill-[#f8a065]" width="74.204" height="41.153" viewBox="0 0 74.204 41.153"><path d="M6.763 35.078a6.232 6.232 0 0 1-5.026-2.792 9.966 9.966 0 0 1 .5-11.917C3.132 19.364 24.63-4.2 65.32.659c3.717.444 6.441 4.565 6.085 9.2s-3.658 8.034-7.374 7.6C29.2 13.3 11.46 32.715 11.284 32.912a6.049 6.049 0 0 1-4.521 2.166Z" transform="rotate(4.992 1.5265 35.01869904)"></path></svg></span> */}
+          <span className={`port_active ${currentTab === 'all' ? 'block' : 'hidden'}`}>
+            <svg 
+              className="qodef-svg--menu-brush qodef-menu-item-brush qodef-menu-item-brush fill-[#f8a065]" 
+              width="74.204" 
+              height="41.153" 
+              viewBox="0 0 74.204 41.153"
+            >
+              <path d="M6.763 35.078a6.232 6.232 0 0 1-5.026-2.792 9.966 9.966 0 0 1 .5-11.917C3.132 19.364 24.63-4.2 65.32.659c3.717.444 6.441 4.565 6.085 9.2s-3.658 8.034-7.374 7.6C29.2 13.3 11.46 32.715 11.284 32.912a6.049 6.049 0 0 1-4.521 2.166Z" transform="rotate(4.992 1.5265 35.01869904)"></path>
+            </svg>
+          </span>
         </button>
-        {/* <button
-                    className={`px-4 py-2 font-semibold relative  uppercase`}
-                    onClick={() => setCurrentTab('development')}
-                >
-                    <span className='relative z-10'>Web Development</span>
-                    <span className={`port_active ${currentTab === 'development' ? 'block' : 'hidden'}`}> <svg className="qodef-svg--menu-brush qodef-menu-item-brush qodef-menu-item-brush fill-[#f8a065]" width="74.204" height="41.153" viewBox="0 0 74.204 41.153"><path d="M6.763 35.078a6.232 6.232 0 0 1-5.026-2.792 9.966 9.966 0 0 1 .5-11.917C3.132 19.364 24.63-4.2 65.32.659c3.717.444 6.441 4.565 6.085 9.2s-3.658 8.034-7.374 7.6C29.2 13.3 11.46 32.715 11.284 32.912a6.049 6.049 0 0 1-4.521 2.166Z" transform="rotate(4.992 1.5265 35.01869904)"></path></svg></span>
-                </button>
-                <button
-                    className={`px-4 py-2 font-semibold relative uppercase`}
-                    onClick={() => setCurrentTab('design')}
-                >
-                    <span className='relative z-10'>Web Design</span>
-                    <span className={`port_active ${currentTab === 'design' ? 'block' : 'hidden'}`}>  <svg className="qodef-svg--menu-brush qodef-menu-item-brush qodef-menu-item-brush fill-[#f8a065]" width="74.204" height="41.153" viewBox="0 0 74.204 41.153"><path d="M6.763 35.078a6.232 6.232 0 0 1-5.026-2.792 9.966 9.966 0 0 1 .5-11.917C3.132 19.364 24.63-4.2 65.32.659c3.717.444 6.441 4.565 6.085 9.2s-3.658 8.034-7.374 7.6C29.2 13.3 11.46 32.715 11.284 32.912a6.049 6.049 0 0 1-4.521 2.166Z" transform="rotate(4.992 1.5265 35.01869904)"></path></svg></span>
-                </button> */}
+        
+        {categories.map((category) => (
+          <button
+            key={category}
+            className={`px-4 py-2 font-semibold relative uppercase`}
+            onClick={() => setCurrentTab(category)}
+          >
+            <span className="relative z-10">{category}</span>
+            <span className={`port_active ${currentTab === category ? 'block' : 'hidden'}`}>
+              <svg 
+                className="qodef-svg--menu-brush qodef-menu-item-brush qodef-menu-item-brush fill-[#f8a065]" 
+                width="74.204" 
+                height="41.153" 
+                viewBox="0 0 74.204 41.153"
+              >
+                <path d="M6.763 35.078a6.232 6.232 0 0 1-5.026-2.792 9.966 9.966 0 0 1 .5-11.917C3.132 19.364 24.63-4.2 65.32.659c3.717.444 6.441 4.565 6.085 9.2s-3.658 8.034-7.374 7.6C29.2 13.3 11.46 32.715 11.284 32.912a6.049 6.049 0 0 1-4.521 2.166Z" transform="rotate(4.992 1.5265 35.01869904)"></path>
+              </svg>
+            </span>
+          </button>
+        ))}
       </div>
 
       {/* Portfolio Items */}
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 mb-6 gap-4 sm:mb-28">
-        {portfolioData.slice(0, visibleItems).map((item) => (
+        {filteredItems.slice(0, visibleItems).map((item) => (
           <div key={item.id} className="space-y-3 group cursor-pointer">
             <Link to={`/portfolio-slug/${item?.id}`}>
               <div className={`h-full border p-10 space-y-6 border-black bg-[#f0ead8] w-full rounded-[50px] overflow-hidden relative`}>
-                <div className="h-[200px] sm:h-[270px]  w-full">
-                  <img src={`${IMAGE_BASE_URL}/${item.banner_image[0]}`} className="w-full h-full object-cover rounded-3xl" alt={item.title} />
-                  {/* <img src={item.imgSrc} className="group-hover:scale-110 transition-transform duration-300 ease-in-out" alt={item.title} /> */}
+                <div className="h-[200px] sm:h-[270px] w-full">
+                  <img 
+                    src={`${IMAGE_BASE_URL}/${item.banner_image[0]}`} 
+                    className="w-full h-full object-cover rounded-3xl" 
+                    alt={item.title} 
+                  />
                 </div>
                 <div>
-                  <p className="uppercase">({item.category?.name})</p>
+                  <p className="uppercase">({item.category?.name || 'Uncategorized'})</p>
                   <p className="text-3xl font-semibold">{item.title}</p>
                 </div>
               </div>
@@ -83,9 +109,8 @@ export default function OurPortfolio() {
       </div>
 
       <div className="mb-6 sm:mb-28">
-        {portfolioData.length > visibleItems && (
-          <div onClick={() => handleLoadMore()}>
-            {/* <Button text="Load More" width="160px" /> */}
+        {filteredItems.length > visibleItems && (
+          <div onClick={handleLoadMore}>
             <button
               className={`relative border border-black rounded-full font-semibold px-3 group hover:px-0 py-2 duration-100 ease-in-out cursor-pointer uppercase w-[160px] m-auto text-lg overflow-hidden flex items-center mt-10`}
             >
