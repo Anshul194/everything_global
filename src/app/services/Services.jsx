@@ -8,13 +8,17 @@ import Service1 from '../../component/services/Service1'
 import Service2 from '../../component/services/Service2'
 import ReadymadePages from '../../component/home/ReadymadePages'
 import ServiceHeading from './ServiceHeading'
+import RouteBasedAccordion from './RouteBasedAccordion'
 
 export default function Services() {  
     return (
         <>
             <ServiceBanner />
-            <div className={`py-10 sm:!py-36`}>
+            <div className={`py-10 sm:!py-16 sm:!pt-36`}>
                 <ServiceHeading />
+            </div>
+            <div className={`py-10 sm:!py-16`}>
+                <RouteBasedAccordion/>
             </div>
             <div className={`custom_container sm:px-12`}>
                 <AllServices />
