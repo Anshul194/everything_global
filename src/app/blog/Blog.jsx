@@ -19,26 +19,72 @@ export default function Blog() {
   const blogPosts = useSelector((store) => store.blog.showBlogs);
   const firstBlogVisit = useSelector((store) => store.blog.firstBlogVisit);
   const [visiblePosts, setVisiblePosts] = useState(6);
-
-  const loadMorePosts = () => {
-      setVisiblePosts((prevVisiblePosts) => prevVisiblePosts + 3);
-  };
-  // console.log(firstBlogVisit)
-  // console.log(blogPosts)
-
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [allPostsLoaded, setAllPostsLoaded] = useState(false);
+  const [fetchedPosts, setFetchedPosts] = useState([]);
+  const [expanded, setExpanded] = useState(false);
+
+  // Keep track of posts we've already seen to prevent duplicates
+  const [processedPostIds, setProcessedPostIds] = useState(new Set());
+
+  const loadMorePosts = () => {
+    // If we've already loaded all available posts, don't try to load more
+    if (allPostsLoaded) return;
+    
+    // Otherwise, show the next 3 posts from what we've already fetched
+    setVisiblePosts(prevVisiblePosts => {
+      const newValue = prevVisiblePosts + 3;
+      setExpanded(true);
+      
+      // If this would display all fetched posts, mark all posts as loaded
+      if (newValue >= fetchedPosts.length) {
+        setAllPostsLoaded(true);
+      }
+      
+      return newValue;
+    });
+  };
+
+  const seeLessPosts = () => {
+    setVisiblePosts(3);
+    setAllPostsLoaded(false);
+    setExpanded(false);
+  };
 
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
+        setLoading(true);
+        // Fetch all available blog posts at once
         const response = await axios.get(`${BASE_URL}/get-blog?organizationId=${orgId}`);
-        if (firstBlogVisit) {
-          dispatch(addAllBlog(response.data.data));
-          dispatch(setShowBlogs(response.data.data));
-          dispatch(setFirstBlogVisit());
+        
+        if (response.data.data && Array.isArray(response.data.data)) {
+          // Ensure we have unique posts by checking IDs
+          const uniquePosts = response.data.data.filter(post => 
+            post.id && !processedPostIds.has(post.id)
+          );
+          
+          // Update our set of processed post IDs
+          const newProcessedIds = new Set(processedPostIds);
+          uniquePosts.forEach(post => newProcessedIds.add(post.id));
+          setProcessedPostIds(newProcessedIds);
+          
+          // Store the fetched posts
+          setFetchedPosts(uniquePosts);
+          
+          if (firstBlogVisit) {
+            dispatch(addAllBlog(uniquePosts));
+            dispatch(setShowBlogs(uniquePosts));
+            dispatch(setFirstBlogVisit());
+          }
+          
+          // If we have 3 or fewer posts total, mark all as loaded
+          if (uniquePosts.length <= 3) {
+            setAllPostsLoaded(true);
+          }
         }
-
+        
         setLoading(false);
       } catch (err) {
         setError("Failed to fetch blog data.");
@@ -49,11 +95,11 @@ export default function Blog() {
     fetchBlogs();
   }, []);
 
-  if (loading) {
+  if (loading && visiblePosts === 3) {
     return <Loader />;
   }
 
-  if (error) {
+  if (error && visiblePosts === 3) {
     return <div>{error}</div>;
   }
 
@@ -70,7 +116,7 @@ export default function Blog() {
                         <span style={{ WebkitTextStroke: '1px black', color: 'transparent' }}> Blog</span>
                     </h2>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 mt-4">
-                        {blogPosts.slice(0, visiblePosts).map((post) => {
+                        {fetchedPosts.slice(0, visiblePosts).map((post) => {
                            const parsedContent = post?.content ? stripHtml(post.content).result : "";
 
                            const limitedContent = parsedContent.split(" ").slice(0, 150).join(" ") + (parsedContent.split(" ").length > 150 ? "..." : "");
@@ -95,11 +141,11 @@ export default function Blog() {
 })}
                     </div>
 
-                    {visiblePosts < blogPosts.length && (
-                        <div className='my-6 sm:my-12'>
+                    <div className='my-6 sm:my-12 flex justify-center'>
+                        {!allPostsLoaded && fetchedPosts.length > visiblePosts && (
                             <button
                                 onClick={loadMorePosts}
-                                className="relative border border-black rounded-full font-semibold px-3 group hover:px-0 py-2 duration-100 ease-in-out cursor-pointer uppercase w-[160px] m-auto text-lg overflow-hidden flex items-center mt-10"
+                                className="relative border border-black rounded-full font-semibold px-3 group hover:px-0 py-2 duration-100 ease-in-out cursor-pointer uppercase w-[160px] m-2 text-lg overflow-hidden flex items-center"
                             >
                                 <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-[#F8A065] rounded-full group-hover:w-full group-hover:h-56"></span>
                                 <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent"></span>
@@ -112,8 +158,26 @@ export default function Blog() {
                                     <span className="sliding-text">Load More</span>
                                 </div>
                             </button>
-                        </div>
-                    )}
+                        )}
+                        
+                        {expanded && visiblePosts > 3 && (
+                            <button
+                                onClick={seeLessPosts}
+                                className="relative border border-black rounded-full font-semibold px-3 group hover:px-0 py-2 duration-100 ease-in-out cursor-pointer uppercase w-[160px] m-2 text-lg overflow-hidden flex items-center"
+                            >
+                                <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-[#F8A065] rounded-full group-hover:w-full group-hover:h-56"></span>
+                                <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent"></span>
+                                <div className="sliding-text-wrapper flex items-center whitespace-nowrap relative z-10">
+                                    <GoDotFill className="text-[#F8A065]" />
+                                    <span className="sliding-text hidden group-hover:block">See Less</span>
+                                    <GoDotFill className="text-[#F8A065] hidden group-hover:block" />
+                                    <span className="sliding-text hidden group-hover:block">See Less</span>
+                                    <GoDotFill className="text-[#F8A065] hidden group-hover:block" />
+                                    <span className="sliding-text">See Less</span>
+                                </div>
+                            </button>
+                        )}
+                    </div>
                 </div>
       </div>
 
@@ -158,16 +222,9 @@ export default function Blog() {
             {/* <div className='mb-24'>
                 <News />
             </div> */}
-
-
-
     </>
   );
 }
-
-
-
-
 
 // import React, { useEffect, useState } from "react";
 // import { GoDotFill } from "react-icons/go";
