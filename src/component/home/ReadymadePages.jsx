@@ -35,21 +35,51 @@ export default function ReadymadePages() {
             </div>
 
             <Link to={`/portfolio`}>
-
                 <button className={`relative border border-black rounded-full font-semibold px-3 group hover:px-0 py-2 duration-100 ease-in-out cursor-pointer uppercase w-[160px] m-auto text-lg overflow-hidden flex items-center mt-10`}>
                     <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-[#f8a065] rounded-full group-hover:w-full group-hover:h-56"></span>
                     <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent"></span>
-                    <div className="sliding-text-wrapper flex items-center whitespace-nowrap relative z-10">
-                        <GoDotFill className="text-[#f8a065]" />
-                        <span className="sliding-text hidden group-hover:block">View More</span>
-                        <GoDotFill className="text-[#f8a065] hidden group-hover:block" />
-                        <span className="sliding-text hidden group-hover:block">View More</span>
-                        <GoDotFill className="text-[#f8a065] hidden group-hover:block" />
-                        <span className="sliding-text">View More</span>
+                    <div className="max-sm:text-sm sliding-text-container flex items-center whitespace-nowrap relative z-10 overflow-hidden">
+                        <div className="sliding-text-content flex items-center group-hover:animate-slide">
+                            <GoDotFill className="text-[#f8a065]" />
+                            <span className="sliding-text">View More</span>
+                            <GoDotFill className="text-[#f8a065]" />
+                            <span className="sliding-text">View More</span>
+                            <GoDotFill className="text-[#f8a065]" />
+                            <span className="sliding-text">View More</span>
+                        </div>
                     </div>
                 </button>
-
             </Link>
+
+            {/* Add animation styles */}
+            <style jsx>{`
+                .sliding-text-container {
+                    overflow: hidden;
+                    position: relative;
+                    width: 100%;
+                }
+                
+                .sliding-text {
+                    padding: 0 8px;
+                }
+                
+                @keyframes slide {
+                    0% {
+                        transform: translateX(0);
+                    }
+                    100% {
+                        transform: translateX(-100%);
+                    }
+                }
+                
+                .group-hover\\:animate-slide {
+                    animation: none;
+                }
+                
+                .group:hover .group-hover\\:animate-slide {
+                    animation: slide 5s linear infinite;
+                }
+            `}</style>
         </div>
     )
 }

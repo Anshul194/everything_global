@@ -20,29 +20,30 @@ export default function AllServices() {
     // Define all services categorized by type
     const allServices = {
         webDesign: [
-            { title: 'UI/UX Design', image: '/image/portfoilo/port1.jpg', link: '/web-design/uiux-design' },
-            { title: 'Website Design & Development', image: '/image/portfoilo/port4.jpg', link: '/web-design/website-design' },
-            { title: 'Custom Web Applications', image: '/image/portfoilo/port7.jpg', link: '/web-design/web-application' },
-            { title: 'SaaS Product Development', image: '/image/portfoilo/port10.jpg', link: '/web-design/saas-development' },
-            { title: 'Seo Services', image: '/image/portfoilo/port10.jpg', link: '/web-design/seo-services' }
+            { title: 'UI/UX Design', image: '/image/home/service1.png', link: '/web-design/uiux-design' },
+            { title: 'Website Design & Development', image: '/image/home/service2.png', link: '/web-design/website-design' },
+            { title: 'Custom Web Applications', image: '/image/home/service3.png', link: '/web-design/web-application' },
+            { title: 'SaaS Product Development', image: '/image/home/service4.png', link: '/web-design/saas-development' },
+            { title: 'Seo Services', image: '/image/home/service5.png', link: '/web-design/seo-services' },
+            { title: 'AI Solution', image: '/image/home/service5.png', link: '/web-design/ai-solution' }
         ],
         growthAdvertising: [
-            { title: 'Influencer Marketing', image: '/image/portfoilo/port6.jpg', link: '/growth-advertising/influencer-marketing' },
-            { title: 'E-commerce Marketing', image: '/image/portfoilo/port9.jpg', link: '/growth-advertising/ecommerce-marketing' },
-            { title: 'Facebook Ads', image: '/image/portfoilo/port2.jpg', link: '/growth-advertising/facebook-ads' },
-            { title: 'PPC (Pay-Per-Click)', image: '/image/portfoilo/port5.jpg', link: '/growth-advertising/ppc' },
-            { title: 'YouTube Marketing', image: '/image/portfoilo/port14.jpg', link: '/growth-advertising/youtube-marketing' },
-            { title: 'Email Marketing', image: '/image/portfoilo/port12.jpg', link: '/growth-advertising/email-marketing' }
+            { title: 'Influencer Marketing', image: '/image/home/service6.png', link: '/growth-advertising/influencer-marketing' },
+            { title: 'E-commerce Marketing', image: '/image/home/service7.png', link: '/growth-advertising/ecommerce-marketing' },
+            { title: 'Facebook Ads', image: '/image/home/service8.png', link: '/growth-advertising/facebook-ads' },
+            { title: 'PPC (Pay-Per-Click)', image: '/image/home/service9.png', link: '/growth-advertising/ppc' },
+            { title: 'YouTube Marketing', image: '/image/home/service10.png', link: '/growth-advertising/youtube-marketing' },
+            { title: 'Email Marketing', image: '/image/home/service11.png', link: '/growth-advertising/email-marketing' }
         ],
         creativeMarketing: [
-            { title: 'Branding', image: '/image/portfoilo/port1.jpg', link: '/creative-marketing/branding' },
-            { title: 'Graphic Design', image: '/image/portfoilo/port4.jpg', link: '/creative-marketing/graphic-design' },
-            { title: '3D Branding', image: '/image/portfoilo/port7.jpg', link: '/creative-marketing/3d-branding' },
-            { title: 'Product Photography', image: '/image/portfoilo/port10.jpg', link: '/creative-marketing/product-photography' },
-            { title: 'Modeling', image: '/image/portfoilo/port11.jpg', link: '/creative-marketing/modeling' },
-            { title: 'Video Editing', image: '/image/portfoilo/port13.jpg', link: '/creative-marketing/video-editing' },
-            { title: 'Social Media Management', image: '/image/portfoilo/port3.jpg', link: '/creative-marketing/social-media-management' },
-            { title: 'Motion Graphics', image: '/image/portfoilo/port8.jpg', link: '/creative-marketing/motion-graphics' }
+            { title: 'Branding', image: '/image/home/service12.png', link: '/creative-marketing/branding' },
+            { title: 'Graphic Design', image: '/image/home/service13.png', link: '/creative-marketing/graphic-design' },
+            { title: '3D Branding', image: '/image/home/service14.png', link: '/creative-marketing/3d-branding' },
+            { title: 'Product Photography', image: '/image/home/service15.png', link: '/creative-marketing/product-photography' },
+            { title: 'Modeling', image: '/image/home/service16.png', link: '/creative-marketing/modeling' },
+            { title: 'Video Editing', image: '/image/home/service17.png', link: '/creative-marketing/video-editing' },
+            { title: 'Social Media Management', image: '/image/home/service18.png', link: '/creative-marketing/social-media-management' },
+            { title: 'Motion Graphics', image: '/image/home/service19.png', link: '/creative-marketing/motion-graphics' }
         ]
     };
 

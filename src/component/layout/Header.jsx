@@ -235,6 +235,7 @@ export default function Header() {
                     <Link to="/web-design/web-application" className='block px-4 py-2 hover:bg-gray-100'>Custom Web Applications</Link>
                     <Link to="/web-design/saas-development" className='block px-4 py-2 hover:bg-gray-100'>SaaS Product Development</Link>
                     <Link to="/web-design/seo-services" className='block px-4 py-2 hover:bg-gray-100'>Seo Services</Link>
+                    <Link to="/web-design/ai-solution" onClick={closeDrawer} className='block px-4 py-2 hover:bg-gray-100'>AI Solution</Link>
                   </div>
                 </div>
                 <div className='relative group'>
@@ -344,6 +345,7 @@ export default function Header() {
               <Link to="/web-design/web-application" onClick={closeDrawer} className='text-[14px] font-medium'>Custom Web Application</Link>
               <Link to="/web-design/saas-development" onClick={closeDrawer} className='text-[14px] font-medium'>SaaS Product Development</Link>
               <Link to="/web-design/seo-services" onClick={closeDrawer} className='text-[14px] font-medium'>Seo Services</Link>
+              <Link to="/web-design/ai-solution" onClick={closeDrawer} className='text-[14px] font-medium'>AI Solution</Link>
             </div>
           )}
           <p className='cursor-pointer nav_link2 font-semibold' onClick={() => toggleMenu('growth')}>

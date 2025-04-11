@@ -5,7 +5,7 @@ import { useLocation } from 'react-router-dom';
 const routeContentMap = {
   '/web-design': {
     id: "WD",
-    title: "Web Design",
+    title: "Web Design ",
     content: "Our web design services create compelling, user-friendly websites that capture your brand's essence while ensuring optimal functionality across all devices.",
     type: "Create captivating digital experiences",
     headering: "Elevate Your Online Presence with Our Web Design Services",
@@ -65,7 +65,7 @@ export default function RouteBasedAccordion() {
             <div className="flex justify-between w-full">
               <div className="flex flex-wrap gap-1 gap-x-20 sm:gap-6 items-start">
                 <h2 
-                  className="uppercase text-3xl sm:text-4xl md:text-6xl lg:!text-[75px] lg:leading-[35px] font-black" 
+                  className="uppercase text-3xl sm:text-4xl md:text-6xl lg:!text-[75px] lg:leading-[65px] max-w-5xl break-words font-black" 
                   style={{
                     WebkitTextStroke: !isOpen ? '1px black' : 'none',
                     color: !isOpen ? 'transparent' : 'black',

@@ -44,6 +44,7 @@ import Webdesign from "./app/services/services-slug/websitedesign/WebsiteDesign"
 import Customweb from "./app/services/services-slug/customwebapp/CustomWebApp";
 import Saasdevelopment from "./app/services/services-slug/saasdevelopment/SaasDevelopment";
 import SeoServices from "./app/services/services-slug/seoservices/SeoServices";
+import AiSolution from "./app/services/services-slug/aisolution/AiSolution";
 
 function App() {
   return (
@@ -73,6 +74,10 @@ function App() {
         <Route  
             path="/web-design/seo-services"
             element={<SeoServices/>}
+        />
+        <Route  
+            path="/web-design/ai-solution"
+            element={<AiSolution/>}
         />
         <Route path="/growth-advertising" element={<Services />} />
           <Route path="/creative-marketing" element={<Services />} />

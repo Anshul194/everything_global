@@ -11,6 +11,37 @@ export default function News() {
     const [blogPosts, setBlogData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    
+    // Add these new states for the load more/less functionality
+    const [visiblePosts, setVisiblePosts] = useState(6);
+    const [allPostsLoaded, setAllPostsLoaded] = useState(false);
+    const [expanded, setExpanded] = useState(false);
+
+    // Function to load more posts
+    const loadMorePosts = () => {
+        // If we've already loaded all posts, don't try to load more
+        if (allPostsLoaded) return;
+        
+        // Otherwise, show 3 more posts
+        setVisiblePosts(prevVisiblePosts => {
+            const newValue = prevVisiblePosts + 3;
+            setExpanded(true);
+            
+            // If this would display all fetched posts, mark all posts as loaded
+            if (newValue >= blogPosts.length) {
+                setAllPostsLoaded(true);
+            }
+            
+            return newValue;
+        });
+    };
+
+    // Function to see fewer posts
+    const seeLessPosts = () => {
+        setVisiblePosts(3);
+        setAllPostsLoaded(false);
+        setExpanded(false);
+    };
 
     useEffect(() => {
         const fetchBlogs = async () => {
@@ -20,6 +51,11 @@ export default function News() {
                 
                 setBlogData(response.data.data);
                 setLoading(false);
+                
+                // If we have 3 or fewer posts total, mark all as loaded
+                if (response.data.data && response.data.data.length <= 3) {
+                    setAllPostsLoaded(true);
+                }
             } catch (err) {
                 setError("Failed to fetch blog data.");
                 setLoading(false);
@@ -44,7 +80,7 @@ export default function News() {
 
                 <div className={`grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-4`}>
                     {
-                        blogPosts && blogPosts.map((item, index) => {
+                        blogPosts && blogPosts.slice(0, visiblePosts).map((item, index) => {
                             const parsedContent = item?.content ? stripHtml(item.content).result : "";
 
                             const limitedContent = parsedContent.split(" ").slice(0, 150).join(" ") + (parsedContent.split(" ").length > 100 ? "..." : "");
@@ -54,9 +90,6 @@ export default function News() {
                                 <div className={`col-span-1 border border-black rounded-[50px] overflow-hidden space-y-4`} key={index}>
                                     <div className={`relative h-[300px] border-b border-black  rounded-[50px] overflow-hidden`}>
                                         <img src={item?.banner_image} alt="blog1" className='h-full object-cover w-full' />
-                                        {/* <div className={`border border-black rounded-xl bg-[#f8a065] absolute top-6 right-6 p-2 w-min text-center`}>
-                                            <h4 className='text-2xl font-semibold'> {item?.createdAt ? moment(item.createdAt).format("DD MMM") : null}</h4>
-                                        </div> */}
                                     </div>
                                     <div className={`space-y-2 p-4 lg:p-8`}>
                                         <p className='uppercase text-sm'>({item?.category?.name || item?.category})</p>
@@ -73,6 +106,45 @@ export default function News() {
                             )
                         })
                     }
+                </div>
+
+                {/* Add Load More / See Less buttons */}
+                <div className='my-6 sm:my-12 flex justify-center'>
+                    {!allPostsLoaded && blogPosts.length > visiblePosts && (
+                        <button
+                            onClick={loadMorePosts}
+                            className="relative border border-black rounded-full font-semibold px-3 group hover:px-0 py-2 duration-100 ease-in-out cursor-pointer uppercase w-[160px] m-2 text-lg overflow-hidden flex items-center"
+                        >
+                            <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-[#F8A065] rounded-full group-hover:w-full group-hover:h-56"></span>
+                            <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent"></span>
+                            <div className="sliding-text-wrapper flex items-center whitespace-nowrap relative z-10">
+                                <GoDotFill className="text-[#F8A065]" />
+                                <span className="sliding-text hidden group-hover:block">Load More</span>
+                                <GoDotFill className="text-[#F8A065] hidden group-hover:block" />
+                                <span className="sliding-text hidden group-hover:block">Load More</span>
+                                <GoDotFill className="text-[#F8A065] hidden group-hover:block" />
+                                <span className="sliding-text">Load More</span>
+                            </div>
+                        </button>
+                    )}
+                    
+                    {expanded && visiblePosts > 3 && (
+                        <button
+                            onClick={seeLessPosts}
+                            className="relative border border-black rounded-full font-semibold px-3 group hover:px-0 py-2 duration-100 ease-in-out cursor-pointer uppercase w-[160px] m-2 text-lg overflow-hidden flex items-center"
+                        >
+                            <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-[#F8A065] rounded-full group-hover:w-full group-hover:h-56"></span>
+                            <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent"></span>
+                            <div className="sliding-text-wrapper flex items-center whitespace-nowrap relative z-10">
+                                <GoDotFill className="text-[#F8A065]" />
+                                <span className="sliding-text hidden group-hover:block">See Less</span>
+                                <GoDotFill className="text-[#F8A065] hidden group-hover:block" />
+                                <span className="sliding-text hidden group-hover:block">See Less</span>
+                                <GoDotFill className="text-[#F8A065] hidden group-hover:block" />
+                                <span className="sliding-text">See Less</span>
+                            </div>
+                        </button>
+                    )}
                 </div>
             </div>
         </>

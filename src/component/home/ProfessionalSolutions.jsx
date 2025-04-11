@@ -27,7 +27,8 @@ export const ProfessionalSolutions1 = () => {
         { id: "2", label: "Website Design & Development", link: "web-design/website-design" },
         { id: "3", label: "Custom Web Applications", link: "/web-design/web-application" },
         { id: "4", label: "SaaS Product Development", link: "/web-design/saas-development" },
-        { id: "5", label: "Seo Services", link: "/web-design/seo-services" }
+        { id: "5", label: "Seo Services", link: "/web-design/seo-services" },
+        { id: "6", label: "AI Solutions", link: "/web-design/ai-solution" }
     ];
 
     return (
@@ -54,7 +55,7 @@ export const ProfessionalSolutions1 = () => {
                 ))}
             </div>
             <div className={`col-span-1 relative`} >
-                <img src={`/image/home/port${index}.png`} alt="Error" className='h-full object-cover lg:absolute w-full left-0' />
+                <img src={`/image/home/service${index}.png`} alt="Error" className='h-full object-cover lg:absolute w-full left-0' />
             </div>
         </div>
     );
@@ -74,7 +75,7 @@ export const ProfessionalSolutions2 = () => {
     return (
         <div className="border my-8 border-black rounded-[70px] grid lg:grid-cols-2 overflow-hidden">
             <div className={`col-span-1 relative`} >
-                <img src={`/image/home/port${index}.png`} alt="Error" className='h-full object-cover lg:absolute w-full left-0' />
+                <img src={`/image/home/service${index}.png`} alt="Error" className='h-full object-cover lg:absolute w-full left-0' />
             </div>
             <div className="col-span-1 border-r border-black">
                 <div className="px-10 py-14 sm:py-14 bg-[#cbdec6] border-b border-black">
@@ -138,7 +139,7 @@ export const ProfessionalSolutions3 = () => {
                 ))}
             </div>
             <div className={`col-span-1 relative`} >
-                <img src={`/image/home/port${index}.png`} alt="Error" className='h-full object-cover lg:absolute w-full left-0' />
+                <img src={`/image/home/service${index}.png`} alt="Error" className='h-full object-cover lg:absolute w-full left-0' />
             </div>
         </div>
     );
