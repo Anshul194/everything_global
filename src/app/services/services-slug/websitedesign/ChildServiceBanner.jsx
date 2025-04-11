@@ -8,7 +8,7 @@ export default function ChildServiceBanner() {
             <div className={`grid lg:grid-cols-12 custom_container px-8 gap-y-10 sm:gap-y-20 !pb-0`}>
                 <div className={`lg:col-span-7 h-full content-around relative`}>
                     <img src="/image/home/happy.webp" alt="Error" className={`absolute right-40 lg:-right-12 lg:top-20 z-0 hidden sm:block`} />
-                    <h1 className={`sm:w-[83%] lg:w-full text-5xl sm:text-[60px] sm:!leading-[65px] xl:text-[64px] xl:leading-[60px] lg:leading-[74px] font-semibold z-10 relative`}>Increase online sales effectively.
+                    <h1 className={`sm:w-[83%] lg:w-full text-5xl sm:text-[60px] sm:!leading-[65px] xl:text-[64px] xl:leading-[60px] lg:leading-[74px] font-semibold z-10 relative`}>Build websites that work for your business.
                     </h1>
                     <img src="/image/home/banner-1.webp" alt="Error" className={`absolute sm:-left-6 `} />
                     {/* <h2 className={`sm:w-[83%] lg:w-full text-4xl sm:text-[50px] sm:!leading-[55px] xl:text-[54px] xl:leading-[40px] lg:leading-[64px] font-semibold z-10 relative mt-2`}>

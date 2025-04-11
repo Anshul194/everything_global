@@ -3,20 +3,20 @@ import { MdArrowOutward } from 'react-icons/md';
 
 const accordionItems = [
     {
-        id: "CM",
-        title: "Influencer Marketing",
-        content: "Our influencer marketing services help you connect with wider, targeted audiences by partnering with influencers who align with your brand values.",
+        id: "",
+        title: "Custom Web Application Development",
+        content: "We develop scalable, secure, and high-performing custom web applications that fit your unique needs. Whether it’s an internal tool or a customer-facing platform, our solutions are designed to streamline operations and enhance user experiences.",
         type: "Create captivating brand visuals.",
-        headering: "Reach New Audiences with Our Influencer Marketing Services",
+        headering: "Tailored Web Applications Built to Solve Real Business Challenges",
         img: "/image/home/accordion1.jpg",
         color: "#d2ebf8"
     },
     {
         id: "",
-        title: "Influencers shape trends",
-        content: "Reach new audiences authentically by partnering with influencers who align with your brand. Our influencer marketing strategies build trust, expand visibility, and drive impactful engagement.",
+        title: "Innovate smarter, scale faster",
+        content: "From concept to code, we build web applications that are intuitive, reliable, and built to grow with your business—turning complex requirements into simple, user-friendly digital tools.",
         type: "design",
-        headering: "Reach wider audiences authentically",
+        headering: "Custom solutions for real results",
         img: "/image/home/accordion3.jpg",
         color: "#F8A065"
     },
@@ -42,7 +42,7 @@ export default function Accordion() {
                             }`} >
                             <div className={`flex justify-between w-full`}>
                                 <div className={`flex flex-wrap gap-1 gap-x-20 sm:gap-6 items-start`}>
-                                    <h2 className={`uppercase text-3xl sm:text-4xl md:text-6xl lg:!text-[75px] lg:leading-[35px] font-black`} style={{
+                                    <h2 className={`uppercase text-3xl sm:text-4xl md:text-6xl lg:!text-[75px] lg:leading-[75px] break-words font-black`} style={{
                                         WebkitTextStroke: openIndex !== index ? '1px black' : 'none',
                                         color: openIndex !== index ? 'transparent' : 'black',
                                     }}>{item?.title}</h2>

@@ -3,7 +3,7 @@ import { MdArrowOutward } from 'react-icons/md';
 
 const accordionItems = [
     {
-        id: "CM",
+        id: "",
         title: "Video Editing",
         content: "Our video editing services transform raw footage into compelling, polished stories that capture attention and keep viewers engaged.",
         type: "Create captivating brand visuals.",
@@ -42,7 +42,7 @@ export default function Accordion() {
                             }`} >
                             <div className={`flex justify-between w-full`}>
                                 <div className={`flex flex-wrap gap-1 gap-x-20 sm:gap-6 items-start`}>
-                                    <h2 className={`uppercase text-3xl sm:text-4xl md:text-6xl lg:!text-[75px] lg:leading-[35px] font-black`} style={{
+                                    <h2 className={`uppercase text-3xl sm:text-4xl md:text-6xl lg:!text-[75px] lg:leading-[75px] break-words font-black`} style={{
                                         WebkitTextStroke: openIndex !== index ? '1px black' : 'none',
                                         color: openIndex !== index ? 'transparent' : 'black',
                                     }}>{item?.title}</h2>
