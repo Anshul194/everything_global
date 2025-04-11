@@ -109,7 +109,7 @@ export default function Sidebar() {
                       </div>
                       <div className="">
                         <h5 className="text-lg font-semibold">{post.title}</h5>
-                        <p className="text-[15px]">{post.createdAt.slice(0, 10)}</p>
+                        <p className="text-[15px]">{post?.published_date.slice(0, 10)}</p>
                       </div>
                     </div>
                   </Link>
